@@ -42,20 +42,6 @@ l = abs(l); % due to the symmetry
 P2d = r*sqrt(beta/dombeta(2)); % create distances
 d2beta = inv(real(ps(:,2))); % convert distances to betas
 l2 = l(d2beta(P2d)); % redistribute the PSF
-%% 3D correction for the image-plane
-% % % rr = s(:,end); % full retina curve
-% % % rr = rr{1e-1,domx(2)}; % retina curve from the optical axis outwards
-% % % rr = rr-min(rr); % all values must be non-negative
-% % % xx = inv(rr);
-% % % % % rr = rr{0,domx(2)};
-% % % % % % xx = (rr); % necessary for revolution around the y-axis
-% % % % domy = minandmax(rr)';
-% % % % % domy = domy-min(domy);
-% % % % yy = chebfun('y',domy); %fix this by inversing the circle to rotatearound the x-axis: x should range from 0 to 0.1716 and y will range from 0 to 1.
-% % % % xx = sqrt(3^2-yy.^2);
-% % % sr = 2*pi*cumsum(xx.*sqrt(1+abs(diff(xx)).^2)); % surface of revolution of the retina 
-% % % ffdgfdgfdgd
-
 w = inv(loa{0,domx(2)}); % arc length from the optical axis as a function of the 'direct' distance to the optical axis
 %% Plot 2D point spread function
 doubleit = @(x,y) [[flipud(-reshape(x(2:end),[],1));x(:)], [flipud(reshape(y(2:end),[],1));y(:)]]; % help function to double the two sides
